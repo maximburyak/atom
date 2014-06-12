@@ -1,4 +1,0 @@
-D:\atom\src\Atom.Areas.Suppliers.Domain\bin\Debug\Atom.Areas.Suppliers.Domain.dll
-D:\atom\src\Atom.Areas.Suppliers.Domain\bin\Debug\Atom.Areas.Suppliers.Domain.pdb
-D:\atom\src\Atom.Areas.Suppliers.Domain\obj\Debug\Atom.Areas.Suppliers.Domain.dll
-D:\atom\src\Atom.Areas.Suppliers.Domain\obj\Debug\Atom.Areas.Suppliers.Domain.pdb
