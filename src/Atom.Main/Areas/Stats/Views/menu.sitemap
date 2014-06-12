@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode
+		url="~/"
+		title="Home"
+		description="The Home Page">
+
+		<siteMapNode
+			url="~/Stats"
+			title="Web Stats"
+			description="Return open work items" >
+
+
+		</siteMapNode>
+
+		<siteMapNode
+			url="~/Fusion/Search/MyWork"
+			title="Archived Files"
+			description="Return work items assigned or raised by you" >
+		</siteMapNode>
+
+		<siteMapNode
+			url="~/Fusion/Incident/Add"
+			title="Add Work"
+			description="Raise a new incident" >
+
+		</siteMapNode>
+		<siteMapNode
+			url="~/Fusion/Profile"
+			title="Profile"
+			description="Create or amend your profile" />
+	</siteMapNode>
+</siteMap>

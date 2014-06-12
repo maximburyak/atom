@@ -1,0 +1,728 @@
+﻿/*
+
+Orange: #F79521
+
+*/
+
+.error-required
+{
+	color: Red;
+}
+
+/*LAYOUT*/
+html, body
+{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+h1
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+#container
+{
+	min-height: 100%;
+	position: relative;
+}
+#body
+{
+	/*padding-top:10px;*/
+	padding-bottom: 60px; /* Height of the footer */
+}
+
+#innerbody
+{
+	/*border-top:solid 1px #CCCCCC;*/
+}
+
+.clearfix:after
+{
+	content: " ";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clearfix /* for IE/Mac */
+{
+	display: inline-block;
+}
+
+#footer
+{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px; /* Height of the footer */
+}
+/*LAYOUT END*/
+
+a
+{
+	color: #F79521;
+	text-decoration: none;
+}
+/*Menu Navigation Styles*/
+
+.global-nav
+{
+	clear: both;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+
+.global-nav .logo
+{
+	display: block;
+    float: left;
+    margin: 0px 10px 0 3px;
+    width: 92px;
+}
+.global-nav .logo a
+{
+	background: url("/Areas/Fusion/Content/Images/fusionsmall.png") no-repeat scroll 0 0 transparent;
+	display: block;
+	height: 60px;
+}
+
+#nav-header
+{
+	border: 0 none currentcolor;
+	font-family: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0 none;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+.global-nav .util
+{
+	float: right;
+	font-size: 11px;
+	margin: 35px 3px 0px 8px;
+}
+.global-nav ul
+{
+	border: 0 none currentcolor;
+	list-style-type: none;
+	margin: 0;
+	outline: 0 none;
+	padding: 0;
+	vertical-align: middle;
+	list-style: none outside none;
+}
+.global-nav li a
+{
+	color: Black;
+}
+
+.global-nav .username
+{
+	color: #000000;
+}
+
+#menu
+{
+	font: 10px normal Verdana, Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+ul#topnav
+{
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 960px;
+	list-style: none;
+	position: relative;
+	font-size: 1.2em;
+	background: url(/Areas/Fusion/Content/Images/TopNavBG.png) repeat-x;
+}
+ul#topnav li
+{
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+ul#topnav li a
+{
+	padding: 10px 15px;
+	display: block;
+	color: #f0f0f0;
+	text-decoration: none;
+}
+ul#topnav li[class="link"]:hover
+{
+	background: #ea7f00 url(/Areas/Fusion/Content/Images/TopNavActiveBG.png) repeat-x;
+}
+/*Active Selection used for setting active background.*/
+.activeselection
+{
+	background: #ea7f00 url(/Areas/Fusion/Content/Images/TopNavActiveBG.png) repeat-x;
+}
+ul#topnav li span
+{
+	float: left;
+	padding: 10px 0;
+	position: absolute;
+	left: 0;
+	top: 35px;
+	display: none;
+	width: 960px;
+	background: #ea7f00;
+	color: #fff;
+	-moz-border-radius-bottomright: 5px;
+	-khtml-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-khtml-border-radius-bottomleft: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+}
+ul#topnav li:hover span
+{
+	display: block;
+}
+ul#topnav li span a
+{
+	display: inline;
+}
+ul#topnav li span a:hover
+{
+	text-decoration: underline;
+}
+
+#fixed
+{
+	min-height: 100%; /* gives layout 100% height */
+	margin: 0 auto; /*width: 100%; /* you can use px, em or % */
+	width: 900px;
+	text-align: left;
+	position: relative;
+}
+
+.box-content, .box-error, .box-yellow, .box-green, .box-orange
+{
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.box-content
+{
+	border: solid 1px #EBEBEB;
+	background: #FBFBFB;
+}
+.box-error
+{
+	border: solid 1px red;
+	background: #FFCCCC;
+}
+.box-yellow
+{
+	border: solid 1px #FEEC6D;
+	background: #FFFFDD;
+}
+.box-green
+{
+	border: solid 1px #47CA0F;
+	background: #BDF9A4;
+}
+
+.box-orange
+{
+	border: solid 1px #ff7f00;
+	background: #FFE4CA;
+}
+
+#fixed .box-green h3, #fixed .box-error h3, #fixed .box-yellow h3
+{
+	padding-left: 55px;
+	height: 48px;
+	line-height: 48px;
+}
+
+
+#fixed .box-error h3
+{
+	color: red;
+	border-bottom: solid 1px red;
+	background: url('/Areas/Fusion/Content/Images/icons/icon_error.png') no-repeat left top;
+}
+
+pre
+{
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+}
+
+#fixed h3
+{
+	color: #b75209;
+	border-bottom: solid 1px #e6c7a8;
+	padding-bottom: 6px;
+	margin-bottom: 10px;
+	display: block;
+	letter-spacing: -1px;
+	font-weight: normal;
+	font-size: 19px;
+}
+
+#pagetitle h1
+{
+	font-size: 24px;
+	font-weight: bold;
+	color: #444444;
+	padding-left: 10px;
+	border-bottom: solid 3px #f7e7d6;
+	padding-bottom: 10px;
+}
+#end-results-title h1
+{
+	margin-top: 20px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #444444;
+	padding-left: 10px;
+	border-bottom: solid 3px #f0f0f0;
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+
+.form-summary
+{
+	display: block;
+	padding-bottom: 10px;
+}
+
+#header
+{
+	float: left;
+}
+
+#changeboardmeetingstatus
+{
+	float: right;
+	margin-top: 0px;
+	font-size: 10px;
+}
+
+#navigation #searchcontainer
+{
+	float: right;
+	margin-top: 26px;
+}
+
+#header
+{
+	margin-left: 30px;
+	margin-top: 26px;
+	width: 390px;
+	padding-bottom: 5px;
+}
+
+#navigation #searchbox
+{
+	margin-top: 5px;
+	height: 20px;
+	font-size: 20px;
+	width: 250px;
+}
+
+.form fieldset
+{
+	margin: 0 auto;
+	border: solid 1px #CCCCCC;
+	padding: 20px;
+}
+
+.form fieldset legend
+{
+	font-size: 22px;
+	margin-bottom: 10px;
+}
+/*ERROR STYLES */
+.field-validation-error
+{
+	color: Red;
+	margin-left: 15px;
+}
+
+.input-validation-error
+{
+	margin-bottom: 4px;
+	border: solid 1px red;
+}
+
+.validation-summary-errors
+{
+	color: Red;
+}
+
+/*END ERROR STYLES */
+
+.form fieldset .form-summary
+{
+	margin-bottom: 10px;
+	display: block;
+}
+
+.form fieldset .checkbox
+{
+	width: auto;
+}
+
+.form fieldset p.submit
+{
+	margin-left: 150px;
+}
+
+button
+{
+	margin-top: 10px;
+	padding: 4px;
+	font-size: 16px;
+}
+.button
+{
+	margin-top: 10px;
+	padding: 4px;
+	font-size: 16px;
+	width: auto;
+	display: block;
+}
+
+.form p
+{
+	margin-bottom: 6px;
+}
+
+.fs-incident
+{
+	background-color: #deeaee;
+}
+.fs-incident fieldset legend
+{
+	margin-bottom: 20px;
+	padding: 2px;
+}
+
+.fs-crf, .fs-project
+{
+	background-color: #e4dcf4;
+	width: 850px;
+}
+
+.fs-crf, fs-project fieldset legend
+{
+	margin-bottom: 20px;
+	padding: 2px;
+}
+
+.form p label
+{
+	display: block;
+	width: 150px;
+	line-height: 100%;
+	float: left;
+}
+.form div label
+{
+	display: block;
+	width: 150px;
+	line-height: 100%;
+	float: left;
+}
+
+textarea
+{
+	width: 400px;
+	height: 100px;
+	font-family: Arial;
+	font-size: 13px;
+}
+
+select, input
+{
+	width: 300px;
+}
+
+
+.form fieldset #currentavatar
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.form fieldset #currentsignature
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.form fieldset #subscriptions
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.form fieldset #changeboardmeeting
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.form fieldset #autoassignto
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.form fieldset #filters
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+.form fieldset .profile
+{
+	position: relative;
+	padding-left: 70px;
+}
+.form fieldset .profile-signature
+{
+	position: relative;
+	padding-left: 170px;
+}
+
+.form fieldset .profile h1, .form fieldset .profile-signature h1
+{
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.form fieldset .subscription
+{
+	position: relative;
+	padding-left: 70px;
+}
+.form fieldset .changeboardmeeting
+{
+	position: relative;
+	padding-left: 70px;
+}
+.form fieldset .autoassignto
+{
+	position: relative;
+	padding-left: 70px;
+}
+.form fieldset .profile-filters
+{
+	position: relative;
+	padding-left: 70px;
+}
+
+.form fieldset .subscription h1
+{
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+.form fieldset .changeboardmeeting h1
+{
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+.form fieldset .autoassignto h1
+{
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.form fieldset .profile-filters h1
+{
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+.form fieldset .profile #avatarlist ul
+{
+	padding: 0;
+	list-style-type: none;
+}
+.form fieldset .profile #avatarlist ul li
+{
+	float: left;
+	padding: 4px;
+}
+
+.form fieldset .profile #avatarlist ul li input
+{
+	width: auto;
+	display: block;
+	margin: 0 auto;
+}
+.form fieldset .profile-signature #signaturelist ul li
+{
+	float: left;
+	padding: 4px;
+}
+
+.form fieldset .profile-signature #signaturelist ul li input
+{
+	width: auto;
+	display: block;
+	margin: 0 auto;
+}
+.workitem-comment
+{
+	background-color: White;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+.signoff-type, .signoff-outcome
+{
+	display: block;
+	margin-bottom: 6px;
+	margin-left: 10px;
+}
+.signoff-outcome
+{
+	color: #666666;
+	margin-left: 25px;
+}
+.signoff-createsig
+{
+	margin-left: 25px;
+	color: #F79521;
+}
+.signoff-outcome .signature-error
+{
+	color: Red;
+}
+.signature-error
+{
+	color: Red;
+}
+.signoff-item
+{
+	float: left;
+	padding: 3px;
+}
+.crf-complete, .project-complete
+{
+	background-color: #e4dcf4;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+.avatar
+{
+	width: 50px;
+	height: 50px;
+	border: solid 1px black;
+}
+.signature
+{
+	width: 150px;
+	height: 50px;
+	border: solid 1px black;
+}
+
+.subscription-list
+{
+	margin-left: 10px;
+	font-size: 12px;
+	padding: 0;
+	list-style-type: none;
+}
+
+
+.subscription-list li
+{
+	height: 16px;
+}
+.subscription-list a span
+{
+	vertical-align: middle;
+}
+
+#profile-filters-list
+{
+	display: inline;
+}
+.profile-filters-list-span
+{
+	vertical-align: middle;
+	display: inline;
+}
+
+.subscription-delete, .filter-delete, .filter-default
+{
+	vertical-align: middle;
+}
+
+.filter-list
+{
+	float: left;
+	margin-bottom: 10px;
+}
+.filter-list button
+{
+	display: block;
+}
+.filter-list span
+{
+	display: block;
+	margin-left: 4px;
+}
+.filter-list .required-field
+{
+	display: inline;
+}
+
+.filter-list #Channels, .filter-list #ChannelsOut, .filter-list #InsuranceCompanies, .filter-list #InsuranceCompaniesOut, .filter-list #Suppliers, .filter-list #SuppliersOut, .filter-list #ProductGroups, .filter-list #ProductGroupsOut
+{
+	height: 200px;
+}
+#filter-list-buttons-channel, #filter-list-buttons-inscos, #filter-list-buttons-suppliers, #filter-list-buttons-productgroups
+{
+	vertical-align: middle;
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+.input-readonly
+{
+	background-color: #e4dcf4;
+	border: none;
+}
+
+#filters-displaytext
+{
+	display: inline;
+}
+.required-field
+{
+	margin-left: 5px;
+	color: Red;
+	font-size: 14pt;
+	display: inline;
+	vertical-align: middle;
+}
+
+.required-field:after
+{
+	content: "*";
+}

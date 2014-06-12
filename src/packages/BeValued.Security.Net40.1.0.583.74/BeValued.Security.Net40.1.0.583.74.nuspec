@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>BeValued.Security.Net40</id>
+    <version>1.0.583.74</version>
+    <title>BeValued.Security.Net40</title>
+    <authors>Bevalued</authors>
+    <owners>Bevalued</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides configuration and API functionality for the SSO within .net 4.0 applications</description>
+    <summary>Provides configuration and API functionality for the SSO within .net 4.0 applications</summary>
+    <dependencies>
+      <dependency id="Microsoft.IdentityModel" version="6.1.7600.16394" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.IdentityModel" targetFramework=".NETFramework4.0" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

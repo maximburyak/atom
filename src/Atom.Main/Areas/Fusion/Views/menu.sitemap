@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode
+		url="~/"
+		title="Home"
+		description="The Home Page">
+
+		<siteMapNode
+			url="~/Fusion"
+			title="Home"
+			description="Return open work items" >
+
+			<siteMapNode
+				url="~/Fusion/Search/OpenIncidents"
+				title="Incidents"
+				description="Return open incidents" />
+
+			<siteMapNode
+				url="~/Fusion/Search/OpenCrfs"
+				title="Crfs"
+				description="Return open crfs" />
+
+			<siteMapNode
+				url="~/Fusion/Search/OpenProjects"
+				title="Projects"
+				description="Return open projects" />
+
+		</siteMapNode>
+
+		<siteMapNode
+			url="~/Fusion/Search/MyWork"
+			title="My Work"
+			description="Return work items assigned or raised by you" >
+
+			<siteMapNode
+				url="~/Fusion/Search/MyIncidents"
+				title="Incidents"
+				description="Return incidents assigned or raised by you" />
+
+			<siteMapNode
+			url="~/Fusion/Search/MyCRFs"
+			title="CRFs"
+			description="Return CRFs assigned or raised by you" />
+
+			<siteMapNode
+			url="~/Fusion/Search/MyProjects"
+			title="Projects"
+			description="Return projects assigned or raised by you" />
+
+		</siteMapNode>
+
+		<siteMapNode
+			url="~/Fusion/Incident/Add"
+			title="Add Work"
+			description="Raise a new incident" >
+
+			<siteMapNode
+			url="~/Fusion/Incident/Create"
+			title="Add Incident"
+			description="Raise a new incident" >
+			</siteMapNode>
+
+			<siteMapNode
+				url="~/Fusion/Crf/Add"
+				title="Add CRF"
+				roles="Fusion.CrfUser,Fusion.CrfAdmin,Fusion.IT,Fusion.SMT,Fusion.COM,Fusion.SuperUser"
+				description="Raise a new Crf">
+			</siteMapNode>
+
+			<siteMapNode
+				url="~/Fusion/Project/Add"
+				title="Add Project"
+				roles="Fusion.ProjectUser,Fusion.ProjectAdmin,Fusion.IT,Fusion.SMT,Fusion.SuperUser"
+				description="Raise a new Project request">
+			</siteMapNode>
+		</siteMapNode>
+		<siteMapNode
+			url="~/Fusion/Profile"
+			title="Profile"
+			description="Create or amend your profile" />
+	</siteMapNode>
+</siteMap>

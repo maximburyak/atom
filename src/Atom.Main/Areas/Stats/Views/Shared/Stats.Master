@@ -1,0 +1,270 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage<Atom.Main.Areas.Stats.Models.ViewModels.ListWebLogViewModelBase>" %>
+<%@ Import Namespace="Atom.Main.Areas.Fusion.Controllers" %>
+<%@ Import Namespace="Atom.Main.Areas.Stats.Models" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+	<title>
+		<asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+	</title>
+	<link href="<%=Url.Stylesheet("main.css") %>" rel="stylesheet" type="text/css" />
+	<link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/jquery-ui-1.8.11.custom.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<%=Url.Javascript("jquery.js") %>"></script>
+	<script type="text/javascript" src="<%=Url.Javascript("jquery.extensions.js") %>"></script>
+	<script src="<%=Url.Javascript("jquery.cookie.js") %>" type="text/javascript"></script>
+	<script src="<%=Url.Javascript("jquery-ui-1.8.11.custom.min.js") %>" type="text/javascript"></script>
+	<script src="<%=Url.JavascriptFusion("jquery.autocomplete.pack.js") %>" type="text/javascript"></script>
+	<script src="<%=Url.JavascriptFusion("workitem/search-autocomplete.js") %>" type="text/javascript"></script>
+	<script src="../../../../Content/Scripts/json2.js" type="text/javascript"></script>
+	<asp:ContentPlaceHolder ID="HeadInclude" runat="server" />
+	
+	<style id="ColumnWidthStore"></style>
+</head>
+<body>
+	<script type="text/javascript">
+
+
+		$(document).ready(function () {
+			var path = '/Stats';
+			var $node = $('ul#topnav li a[href="' + path + '"]');
+			var $parent = $('#' + $node.attr('parent')).addClass('activeselection').next('span').toggle();
+			$("#WebPathHelp").click(function () {
+				$("#webpathInfo").dialog({
+					title: "Web Path Information"
+				});
+			});
+
+		});
+
+		var CookieKey = document.title + "_hidenColumns";
+		var LoadMessage = "<div class='loadingMessage'>Loading Results...</div>";
+		var Disabled = "disabledTable";
+
+		function validateKeyPress(event) {
+			if (event.which == "13") // on "enter"
+				sendQuery();
+		}
+
+		$(document).ready(function () {
+			$("#WebLogSearchFieldset").keypress(validateKeyPress);
+			$("#SearchButton").click(sendQuery);
+		});
+
+		function isNumeric(input) {
+			return (input - 0) == input && input.length > 0;
+		}
+
+		function loadHiddenCols() {
+			var cookieData = $.cookie(CookieKey);
+			return (cookieData)
+						? JSON.parse(cookieData)
+						: { "Id": true }; // default (ie when cookie entry is missing)
+		}
+
+		function saveHiddenCols(data) {
+			$.cookie(CookieKey, JSON.stringify(data), { expires: 365 });
+		}
+		
+		function rememberHiddenColumn(colName) {
+			var hiddenCols = loadHiddenCols();
+			hiddenCols[colName] = true;
+			saveHiddenCols(hiddenCols);
+		}
+
+		function forgetHiddenColumn(colName) {
+			var hiddenCols = loadHiddenCols();
+			hiddenCols[colName] = false;
+			saveHiddenCols(hiddenCols);
+		}
+
+
+		function getColumnCells(ordinal) {
+			return $(".weblogResults td:nth-child(" + ordinal + ")");
+		}
+
+		function createUnhideColControl(unhidecol, ordinal, content) {
+			return '<span class="unhideLink" ordinal="${ordinal}" unhidecol="${unhidecol}">${content}<img src="../../Content/Images/tick.png"></img></span>'
+							.replace("${ordinal}", ordinal)
+							.replace("${unhidecol}", unhidecol)
+							.replace("${content}", content);
+		}
+
+		function hideColumn(unhideLocation, headerElem) {
+
+			// grab the <TD> table header element
+			$elem = $(headerElem);
+			var $td = ($elem.is("TD"))
+							? $elem
+							: $elem.parentsUntil("tr").last();
+
+			// find out the ordinal number of this <TD> element
+			var n = 1 + $td.prevAll("td").size();
+
+			// hide the column, including the column's header
+			getColumnCells(n).hide();
+			var copy = $td.clone();
+			var colName = $td.attr("columnname");
+
+			// add a button (or control) to the page that allows the user to unhide the column
+			var unhideColControl = createUnhideColControl(colName, n, $td.text());
+
+			$(unhideLocation).append(unhideColControl);
+
+			// make the unhide control clickable
+			$("[unhidecol=" + colName + "]").click(function (event) {
+				var $cell = $(event.currentTarget);
+				var ordinal = $cell.attr("ordinal");
+				var colName = $cell.attr("unhidecol");
+				getColumnCells(ordinal).show();
+				$(event.currentTarget).remove();
+				forgetHiddenColumn(colName);
+			});
+			rememberHiddenColumn(colName);
+		}
+
+
+
+
+
+		function attachColumnHiderHandler(hideButtonClass, unhideLocation) {
+			$(hideButtonClass).click(function (event) {
+
+				hideColumn(unhideLocation, event.target);
+
+				event.stopPropagation();
+			});
+		}
+
+		function autoHideCols(tableSelector, unHideLocation) {
+			
+			$("#hiddenColumns").html("");
+			var colsToHide = loadHiddenCols();
+			$(tableSelector).find("THEAD TR TD").each(function (i) {
+				var colName = $(this).attr("columnname");
+				if (colName && colsToHide[colName]) {
+					hideColumn(unHideLocation, this);
+				}
+			});
+
+			if ($("#hiddenColumns").html() != "")
+				$("#hiddenColumnsBorder").show();
+		}
+
+		function zebraStripe(tableBodySelector) {
+			$(tableBodySelector).find("tr:odd").addClass("zebraStripe");
+		}
+
+		function reZebraStripe(tableBodySelector) {
+			$(tableBodySelector + " tr").removeClass("zebraStripe");
+			zebraStripe(tableBodySelector);
+		}
+
+		function displayLoadingMessage($resultsBox) {
+			$resultsBox.prepend(LoadMessage);
+			$(".weblogResults").addClass(Disabled);
+		}
+
+		function sortHandler(event) {
+			$colHeader = $(event.currentTarget).find(".ClickSortableText");
+
+			// find out what is already set
+			// PS. we're converting booleans to integers cos the JS XOR function doesn't like booleans!
+			var isDesc = $colHeader.hasClass("SortDesc") ? 1 : 0;
+			var isAsc = $colHeader.hasClass("SortAsc") ? 1 : 0;
+			sortColumn = $colHeader.parentsUntil("TR").last().attr("columnname");
+
+			isSortDesc = (isAsc ^ isDesc)
+								? isDesc !== 1	// toggle value
+								: true;			// set to default
+
+			sendQuery();
+
+			return false; // disable the default click response
+		}
+
+		function linkToWebPathFilter(columnSelector) {
+			// select web path (and insert into "WebPath Filter" textbox) event handler
+			$(columnSelector).click(function (event) {
+				var path = $(event.target).text();
+				var trimmedPath = $.trim(path);
+				$("#PathFilter").val(trimmedPath);
+			}).css("cursor", "pointer");
+		}
+		
+	</script>
+	<div id="container">
+
+		<!-- Header -->
+		<div id="navigation" class="container_16">
+			<div>
+				<div id="menu">
+					<ul style="padding-bottom: 40px;" id="topnav">
+						<li >
+							<a style="font-weight: bold;color: Orange">Atom Stats</a>
+						</li>
+						<li class="link">
+							<a parent="StatsNav" id="StatsNav" href="/Stats">Web Stats</a> 
+							<span>
+								<a parent="StatsNav" href="/Stats/WebLog">Web File Activity</a> | 
+								<a parent="StatsNav" href="/Stats/WebLog/Archive">Archived Files</a>
+							</span>
+						</li>
+						<li class="link">
+							<a href="/Security/LogOut">Log Out</a>
+						</li>
+						<li style="float: right; margin-right: 10px;">
+							<div id="searchcontainment">
+								<form method="post" action="/Fusion/Search/Index" id="searchform">
+								<div id="searchboxwrap">
+									<input type="text" autocomplete="off" name="search" id="searchbox" />
+								</div>
+								</form>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="clear">
+		</div>
+		<div id="body">
+			<div id="innerbody">
+						<h1 id="WebfilesTitle"><asp:ContentPlaceHolder ID="TitleBodyContent" runat="server" /></h1>
+						<div id="WebLogSearchFieldset" >
+
+						Website: <%=Html.DropDownList("Websites", Model.AvailableSites.Select<WebsiteName, SelectListItem>(s=> new SelectListItem() {Text = s.SiteName, Value = s.IISInternalName } )) %>
+						WebPath Filter: <%=Html.TextBox("PathFilter")%>	
+						<img id="WebPathHelp" src="../../../../Content/images/information.png" />
+						<button id="SearchButton">Search</button>
+
+						<asp:ContentPlaceHolder ID="ExtendedSearchOptions" runat="server" />
+						
+					</div>
+				<div id="webpathInfo" style="display:none">
+					You can filter the table using the web path.  You can use
+					the * as a wildcard token that matches anything.  For example,
+					/foo/bar/* will match all files and folders who's path begins
+					/foo/bar/
+				</div>
+				<div id="hiddenColumnsBorder" style="display:none">
+					<strong>Hidden Columns</strong>
+					<div id="hiddenColumns"></div>
+				</div>
+				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
+			</div>
+		</div>
+		<div id="footer">
+			<div id="footerlinks" class="container_12">
+				<div class="grid_12">
+					&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

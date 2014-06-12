@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+
+  <configSections>
+    <section name="microsoft.identityModel" type="Microsoft.IdentityModel.Configuration.MicrosoftIdentityModelSection, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xdt:Transform="Insert"/>
+  </configSections>
+
+  <appSettings>
+    <add key="SecurityUrl" value="https://dev-security.bevalued.co.uk" xdt:Transform="Insert"/>
+    <add key="Environment" value="Dev" xdt:Transform="Insert"/>
+    <add key="SlidingExpirationTime" value="20" xdt:Transform="Insert"/>
+    <add key="CertificateThumbprint" value="f63fdee46827e52f7a12c56fc224c662fc8cbc3a" xdt:Transform="Insert"/>
+  </appSettings>
+
+  <system.web>
+    <compilation xdt:Transform="RemoveAttributes(debug)" />
+  </system.web>
+
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false" />
+    <handlers>
+      <add name="SecurityProxyHandler" xdt:Transform="Remove" xdt:Locator="Match(name)"/>
+    </handlers>
+    <modules runAllManagedModulesForAllRequests="true">
+      <add name="SecurityProxyModule" xdt:Transform="Remove" xdt:Locator="Match(name)"/>
+      <add name="WSFederationAuthenticationModule" preCondition="managedHandler" type="Microsoft.IdentityModel.Web.WSFederationAuthenticationModule, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xdt:Transform="Insert"/>
+      <add name="SlidingExpirationSessionAuthenticationModule" type="BeValued.Security.Web.SlidingExpirationSessionAuthenticationModule, BeValued.Security" xdt:Transform="Insert"/>
+    </modules>
+  </system.webServer>
+
+  <microsoft.identityModel xdt:Transform="Insert">
+    <service>
+      <audienceUris>
+        <add value="https://YOUR-DEV-URL-HERE/" />
+      </audienceUris>
+      <securityTokenHandlers>
+        <remove type="Microsoft.IdentityModel.Tokens.SessionSecurityTokenHandler, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <remove type="Microsoft.IdentityModel.Tokens.X509SecurityTokenHandler, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+        <add type="BeValued.Security.Web.X509SessionSecurityTokenHandler, BeValued.Security" />
+        <add type="Microsoft.IdentityModel.Tokens.X509SecurityTokenHandler, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+      </securityTokenHandlers>
+      <issuerNameRegistry type="Microsoft.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+        <trustedIssuers>
+          <add thumbprint="f63fdee46827e52f7a12c56fc224c662fc8cbc3a" name="https://dev-security.bevalued.co.uk" />
+        </trustedIssuers>
+      </issuerNameRegistry>
+      <serviceCertificate>
+        <certificateReference storeName="My" x509FindType="FindByThumbprint" storeLocation="LocalMachine" findValue="f63fdee46827e52f7a12c56fc224c662fc8cbc3a" />
+      </serviceCertificate>
+      <certificateValidation certificateValidationMode="None" />
+      <federatedAuthentication>
+        <wsFederation passiveRedirectEnabled="true" issuer="https://dev-security.bevalued.co.uk" realm="https://YOUR-DEV-URL-HERE/" reply="https://YOUR-DEV-URL-HERE/" requireHttps="true" />
+        <cookieHandler name="FedAuth" requireSsl="true" persistentSessionLifetime="00:00:30" />
+      </federatedAuthentication>
+    </service>
+  </microsoft.identityModel>
+  
+</configuration>

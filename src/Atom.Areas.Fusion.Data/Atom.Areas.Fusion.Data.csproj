@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B9D35586-1BCB-4092-B62D-68418FE99D85}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atom.Areas.Fusion.Data</RootNamespace>
+    <AssemblyName>Atom.Areas.Fusion.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Dev\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|AnyCPU'">
+    <OutputPath>bin\Live\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BeValued.Utilities">
+      <HintPath>..\..\libs\BeValued.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=1.3.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\nh3.2\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel">
+      <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\nh3.2\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.LambdaExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\nh3.2\NHibernate.LambdaExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClassMaps\AdditionalInfoTypeMap.cs" />
+    <Compile Include="ClassMaps\ArchivedFileMap.cs" />
+    <Compile Include="ClassMaps\CategoryMap.cs" />
+    <Compile Include="ClassMaps\ChangeBoardMap.cs" />
+    <Compile Include="ClassMaps\CompoundWebLogMap.cs" />
+    <Compile Include="ClassMaps\FileLogMap.cs" />
+    <Compile Include="ClassMaps\FilterMap.cs" />
+    <Compile Include="ClassMaps\LocationMap.cs" />
+    <Compile Include="ClassMaps\UserMap.cs" />
+    <Compile Include="ClassMaps\IClassMap.cs" />
+    <Compile Include="ClassMaps\IncidentDepartmentMap.cs" />
+    <Compile Include="ClassMaps\InscoMap.cs" />
+    <Compile Include="ClassMaps\ProfileMap.cs" />
+    <Compile Include="ClassMaps\SuppliersMap.cs" />
+    <Compile Include="ClassMaps\WebLogAggregateMap.cs" />
+    <Compile Include="ClassMaps\WebLogAnalysisMap.cs" />
+    <Compile Include="ClassMaps\WebLogMap.cs" />
+    <Compile Include="ClassMaps\WebsiteInfoMap.cs" />
+    <Compile Include="ClassMaps\WorkItemLinkMap.cs" />
+    <Compile Include="Conventions\AnsiStringConvention.cs" />
+    <Compile Include="Conventions\AuditForeignKeyColumnConvention.cs" />
+    <Compile Include="Conventions\ClassConventions.cs" />
+    <Compile Include="Conventions\EnumConventions.cs" />
+    <Compile Include="Conventions\ImageConventions.cs" />
+    <Compile Include="Conventions\OverrideConventions.cs" />
+    <Compile Include="Conventions\StringConventions.cs" />
+    <Compile Include="Listeners\FusionFlushEntityEventListener.cs" />
+    <Compile Include="Listeners\FusionAuditEventListener.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\BaseSearch.cs" />
+    <Compile Include="Queries\ListArchivedFiles.cs" />
+    <Compile Include="Queries\ListLinkedWorkItems.cs" />
+    <Compile Include="Queries\ListSingleIncidentDept.cs" />
+    <Compile Include="Queries\ListSingleProject.cs" />
+    <Compile Include="Queries\ListCategory.cs" />
+    <Compile Include="Queries\GetFullCaseDetails.cs" />
+    <Compile Include="Queries\IQuery.cs" />
+    <Compile Include="Queries\ListAdditionalInfo.cs" />
+    <Compile Include="Queries\ListAreas.cs" />
+    <Compile Include="Queries\ListClosedCases.cs" />
+    <Compile Include="Queries\ListMyOpenCases.cs" />
+    <Compile Include="Queries\ListMySubscriptions.cs" />
+    <Compile Include="Queries\ListOpenCases.cs" />
+    <Compile Include="Queries\ListSingleCrf.cs" />
+    <Compile Include="Queries\ListSingleHandlingDept.cs" />
+    <Compile Include="Queries\ListSingleIncident.cs" />
+    <Compile Include="Queries\ListSingleWorkItem.cs" />
+    <Compile Include="Queries\ListSingleUser.cs" />
+    <Compile Include="Queries\ListSupportAreas.cs" />
+    <Compile Include="Queries\ListSupportLocations.cs" />
+    <Compile Include="Queries\ListTeamUsers.cs" />
+    <Compile Include="Queries\ListUserFilters.cs" />
+    <Compile Include="Queries\ListUserProfile.cs" />
+    <Compile Include="Queries\ListWebLogAnalysis.cs" />
+    <Compile Include="Queries\ListWebLogWebsites.cs" />
+    <Compile Include="Queries\Search\Tokens\AssignedNameToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\AssignedRequireSignOffToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\AssignedToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\BaseSearchToken.cs" />
+    <Compile Include="Queries\Search\TokenManagers\DigitTokenManager.cs" />
+    <Compile Include="Queries\Search\TokenManagers\PrefixTokenManager.cs" />
+    <Compile Include="Queries\Search\Tokens\ChangeBoardMeetingToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\ClientRequirementToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\NextSignOffToken.cs" />
+    <Compile Include="Queries\Search\Tokens\LocationToken.cs" />
+    <Compile Include="Queries\Search\Tokens\FromDateToken.cs" />
+    <Compile Include="Queries\Search\Tokens\HandlingDepartmentToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\HouseKeepingToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\InfrastructureDailyWorkToken.cs" />
+    <Compile Include="Queries\Search\Tokens\LastUpdatedByNameToken.cs" />
+    <Compile Include="Queries\Search\Tokens\LastUpdatedByToken.cs" />
+    <Compile Include="Queries\Search\Tokens\RaisedNameToken.cs" />
+    <Compile Include="Queries\Search\Tokens\RaisedToken.cs" />
+    <Compile Include="Queries\Search\Tokens\SearchExample.cs" />
+    <Compile Include="Queries\Search\TokenManagers\TextTokenManager.cs" />
+    <Compile Include="Queries\Search\Tokens\ISearchToken.cs" />
+    <Compile Include="Queries\Search\Tokens\SeverityToken.cs" />
+    <Compile Include="Queries\Search\Tokens\StatusToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\ToDateToken.cs" />
+    <Compile Include="Queries\Search\Tokens\TokenManager.cs" />
+    <Compile Include="Queries\Search\Tokens\SearchQuery.cs" />
+    <Compile Include="Queries\Search\Tokens\WorkItemDigitToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\WorkItemHistoryToken.cs" />
+    <Compile Include="Queries\Search\Tokens\WorkItemTextToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\WorkItemToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\WorkItemTypeIndividualToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\Search\Tokens\WorkItemTypeToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Queries\SupportCaseFetchModes.cs" />
+    <Compile Include="WorkItemLinkDto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atom.Areas.Fusion.Domain\Atom.Areas.Fusion.Domain.csproj">
+      <Project>{319670E9-A552-425C-9D5A-0C532A199CCD}</Project>
+      <Name>Atom.Areas.Fusion.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atom.Main.Domain\Atom.Main.Domain.csproj">
+      <Project>{8D841E9F-575F-48EC-A5F0-20EFAB756C3A}</Project>
+      <Name>Atom.Main.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

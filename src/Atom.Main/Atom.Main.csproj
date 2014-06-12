@@ -1,0 +1,919 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A9B7D948-9635-4077-8FE7-C582FEA6D60B}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atom.Main</RootNamespace>
+    <AssemblyName>Atom.Main</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>true</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <UseIISExpress>true</UseIISExpress>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DeployIisAppPath>atom2</DeployIisAppPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DeployIisAppPath>atom</DeployIisAppPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Dev|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DeployIisAppPath>atom2</DeployIisAppPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Live|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DeployIisAppPath>atom</DeployIisAppPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BeValued.Data.NHibernate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\BeValued.Data.NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="BeValued.Data.SQL">
+      <HintPath>..\..\libs\BeValued.Data.SQL.dll</HintPath>
+    </Reference>
+    <Reference Include="BeValued.Domain.Common">
+      <HintPath>..\..\libs\BeValued.Domain.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="BeValued.Domain.Common.Services">
+      <HintPath>..\..\libs\BeValued.Domain.Common.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="BeValued.Domain.Events">
+      <HintPath>..\..\libs\BeValued.Domain.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="BeValued.Mvc">
+      <HintPath>..\..\libs\BeValued.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="BeValued.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\BeValued.Security.Net40.1.0.493.375\lib\net40\BeValued.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="BeValued.Utilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\BeValued.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.2.9.0.1\lib\2.0\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=1.3.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\nh3.2\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel">
+      <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\nh3.2\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.SysCache">
+      <HintPath>..\..\libs\nh3.2\NHibernate.Caches.SysCache.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.LambdaExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\nh3.2\NHibernate.LambdaExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="xVal, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\libs\xVal.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplicationResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Dashboard\Services\HtmlHelpers.cs" />
+    <Compile Include="Areas\Fusion\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Fusion\Controllers\CABStatusController.cs" />
+    <Compile Include="Areas\Fusion\Controllers\CRFController.cs" />
+    <Compile Include="Areas\Fusion\Controllers\IncidentController.cs" />
+    <Compile Include="Areas\Fusion\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Fusion\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\Fusion\Controllers\SearchController.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\AddCaseViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\AddCrfViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\AddProjectViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\BaseWorkItemViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\CABStatusViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\CaseDetailsBaseViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\CaseDetailsViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\CrfCompleteViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\CrfDetailsBaseViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\CrfDetailsViewModel.cs" />
+    <Compile Include="Areas\Dashboard\Models\ViewModels\DashboardViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\ProfileViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\ProjectCompleteViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\ProjectDetailsBaseViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\ProjectDetailsViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\SearchViewModel.cs" />
+    <Compile Include="Areas\Fusion\Models\ViewModels\UserSessionModel.cs" />
+    <Compile Include="Areas\Fusion\Models\WorkItemListItemModel.cs" />
+    <Compile Include="Areas\Fusion\Models\WorkItemListModel.cs" />
+    <Compile Include="Areas\Fusion\Services\DocumentHelper.cs" />
+    <Compile Include="Areas\Fusion\Services\Domain\CommentService.cs" />
+    <Compile Include="Areas\Fusion\Services\Domain\CrfService.cs" />
+    <Compile Include="Areas\Fusion\Services\Domain\IRoleAuthorizationService.cs" />
+    <Compile Include="Areas\Fusion\Services\Domain\ProfileService.cs" />
+    <Compile Include="Areas\Fusion\Services\Domain\ProjectService.cs" />
+    <Compile Include="Areas\Fusion\Services\Domain\RoleAuthorizationService.cs" />
+    <Compile Include="Areas\Fusion\Services\Domain\SearchService.cs" />
+    <Compile Include="Areas\Fusion\Services\Domain\SupportIncidentService.cs" />
+    <Compile Include="Areas\Fusion\Services\Domain\WorkItemService.cs" />
+    <Compile Include="Areas\Fusion\Services\Filters\AuthorizeRole.cs" />
+    <Compile Include="Areas\Fusion\Services\Filters\CommentFilter.cs" />
+    <Compile Include="Areas\Fusion\Services\Filters\UserFilter.cs" />
+    <Compile Include="Areas\Fusion\Services\FusionCacheManager.cs" />
+    <Compile Include="Areas\Fusion\Services\HtmlHelpers.cs" />
+    <Compile Include="Areas\Fusion\Services\ICacheService.cs" />
+    <Compile Include="Areas\Fusion\Services\ImageHelpers.cs" />
+    <Compile Include="Areas\Fusion\Services\IObjectStore.cs" />
+    <Compile Include="Areas\Fusion\Services\LinkHelper.cs" />
+    <Compile Include="Areas\Fusion\Services\MenuHelper.cs" />
+    <Compile Include="Areas\Fusion\Services\SessionStore.cs" />
+    <Compile Include="Areas\Fusion\Services\SignatureHelper.cs" />
+    <Compile Include="Areas\Fusion\Services\SubscriptionHelper.cs" />
+    <Compile Include="Areas\Fusion\Services\UrlHelpers.cs" />
+    <Compile Include="Areas\Fusion\Services\Validator.cs" />
+    <Compile Include="Areas\Fusion\Services\WorkItemHelper.cs" />
+    <Compile Include="Areas\Stats\Controllers\WebLogController.cs" />
+    <Compile Include="Areas\Stats\Models\ViewModels\ListArchivedWebFilesViewModel.cs" />
+    <Compile Include="Areas\Stats\Models\ViewModels\ListWebLogViewModel.cs" />
+    <Compile Include="Areas\Stats\Models\ViewModels\ListWebLogViewModelBase.cs" />
+    <Compile Include="Areas\Stats\Models\WebsiteInfo.cs" />
+    <Compile Include="Areas\Stats\Services\Domain\WebLogOperationService.cs" />
+    <Compile Include="Areas\Stats\Services\Filters\AuthorizeRole.cs" />
+    <Compile Include="Areas\Stats\Services\FormatHelper.cs" />
+    <Compile Include="Areas\Suppliers\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Suppliers\Controllers\V2MappingController.cs" />
+    <Compile Include="Areas\Suppliers\Controllers\MappingController.cs" />
+    <Compile Include="Areas\Suppliers\Controllers\EtlController.cs" />
+    <Compile Include="Areas\Suppliers\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Suppliers\Models\CommonViewModel.cs" />
+    <Compile Include="Areas\Suppliers\Models\ExistingMappingViewModel.cs" />
+    <Compile Include="Areas\Suppliers\Models\ExistingV2MappingViewModel.cs" />
+    <Compile Include="Areas\Suppliers\Models\MissingMappingViewModel.cs" />
+    <Compile Include="Areas\Suppliers\Models\MissingV2CommonViewModel.cs" />
+    <Compile Include="Areas\Suppliers\Models\MissingV2MappingPpViewModel.cs" />
+    <Compile Include="Areas\Suppliers\Models\MissingV2MappingViewModel.cs" />
+    <Compile Include="Areas\Suppliers\Models\SupplierFeedsLoadItemMapping.cs" />
+    <Compile Include="Areas\Suppliers\Models\V2PpMappingLoadItemViewModelItem.cs" />
+    <Compile Include="Areas\Suppliers\Services\EtlService.cs" />
+    <Compile Include="Areas\Suppliers\Services\MappingService.cs" />
+    <Compile Include="Areas\Suppliers\Services\Pager.cs" />
+    <Compile Include="Areas\Suppliers\Services\PagingExtensions.cs" />
+    <Compile Include="Areas\Suppliers\Services\SuppliersCacheManager.cs" />
+    <Compile Include="Areas\Suppliers\Services\V2MappingService.cs" />
+    <Compile Include="Filters\AtomPrincipalAttribute.cs" />
+    <Compile Include="Filters\RedirectToSsl.cs" />
+    <Compile Include="Registries\MvcRegistry.cs" />
+    <Compile Include="Registries\NHibernateRegistry.cs" />
+    <Compile Include="RoleManager.cs" />
+    <Compile Include="Routing\DashboardRouting.cs" />
+    <Compile Include="Routing\StatsRoutes.cs" />
+    <Compile Include="Routing\SupplierRoutes.cs" />
+    <Compile Include="Areas\Dashboard\Services\DashboardServices.cs" />
+    <Compile Include="Services\Paging\IPagedList.cs" />
+    <Compile Include="Services\Paging\PagedList.cs" />
+    <Compile Include="Services\Paging\Pager.cs" />
+    <Compile Include="Services\Paging\PagingExtensions.cs" />
+    <Compile Include="Services\SubscriptionUserEqualityComparer.cs" />
+    <Compile Include="Setup\AutoPersistanceConfig.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="BeValuedMvcViewEngine.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\MessageViewModel.cs" />
+    <Compile Include="Models\ViewModels\SecurityAdminViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routing\FusionRoutes.cs" />
+    <Compile Include="Services\AtomCacheManager.cs" />
+    <Compile Include="Services\AtomResourceHelper.cs" />
+    <Compile Include="Services\Filters\AuthorizeRoles.cs" />
+    <Compile Include="Services\SecurityAdminService.cs" />
+    <Compile Include="Services\UrlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Content\css\complex.css" />
+    <Content Include="Areas\Dashboard\Content\css\corporate.css" />
+    <Content Include="Areas\Dashboard\Content\css\dashboard.css" />
+    <Content Include="Areas\Dashboard\Content\css\xp-style.css" />
+    <Content Include="Areas\Dashboard\Content\images\blackopacity.png" />
+    <Content Include="Areas\Dashboard\Content\images\completed-toggler-close.png" />
+    <Content Include="Areas\Dashboard\Content\images\completed-toggler-open.png" />
+    <Content Include="Areas\Dashboard\Content\images\crf1.png" />
+    <Content Include="Areas\Dashboard\Content\images\crf2.png" />
+    <Content Include="Areas\Dashboard\Content\images\crf3.png" />
+    <Content Include="Areas\Dashboard\Content\images\flattoggler-close-hover.png" />
+    <Content Include="Areas\Dashboard\Content\images\flattoggler-close.png" />
+    <Content Include="Areas\Dashboard\Content\images\flattoggler-open-hover.png" />
+    <Content Include="Areas\Dashboard\Content\images\flattoggler-open.png" />
+    <Content Include="Areas\Dashboard\Content\images\fusionlogo.png" />
+    <Content Include="Areas\Dashboard\Content\images\grandprix.png" />
+    <Content Include="Areas\Dashboard\Content\images\logo.png" />
+    <Content Include="Areas\Dashboard\Content\images\project.png" />
+    <Content Include="Areas\Dashboard\Content\images\road.jpg" />
+    <Content Include="Areas\Dashboard\Content\images\sidebarbg.png" />
+    <Content Include="Areas\Dashboard\Content\images\toggler-close-hover.png" />
+    <Content Include="Areas\Dashboard\Content\images\toggler-close.png" />
+    <Content Include="Areas\Dashboard\Content\images\toggler-open-hover.png" />
+    <Content Include="Areas\Dashboard\Content\images\toggler-open.png" />
+    <Content Include="Areas\Dashboard\Content\images\tooltip-bottom.png" />
+    <Content Include="Areas\Dashboard\Content\images\tooltip-top.png" />
+    <Content Include="Areas\Dashboard\Content\images\tooltip-xp.png" />
+    <Content Include="Areas\Dashboard\Content\images\topbar-corner.png" />
+    <Content Include="Areas\Dashboard\Content\images\topbarbg.png" />
+    <Content Include="Areas\Dashboard\Content\images\unassigned-toggler-close.png" />
+    <Content Include="Areas\Dashboard\Content\images\unassigned-toggler-open.png" />
+    <Content Include="Areas\Dashboard\Content\images\xp-crf1.png" />
+    <Content Include="Areas\Dashboard\Content\images\xp-crf2.png" />
+    <Content Include="Areas\Dashboard\Content\images\xp-crf3.png" />
+    <Content Include="Areas\Dashboard\Content\images\xp-project.png" />
+    <Content Include="Areas\Dashboard\Content\Scripts\Dashboard.js" />
+    <Content Include="Areas\Dashboard\Content\Scripts\ietextshadow.js" />
+    <Content Include="Areas\Dashboard\Content\Scripts\jquery-ui-layout.js" />
+    <Content Include="Areas\Dashboard\Content\Scripts\jquery-ui.js" />
+    <Content Include="Areas\Dashboard\Content\Scripts\jquery.cookie.js" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\CompletedStats.ascx" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\Index.aspx" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\MainGrid.ascx" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\OutstandingStats.ascx" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\PmoGrid.ascx" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\PmoTeamGrid.ascx" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\StartingGrid.ascx" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\Summary.aspx" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\winnersPodium.ascx" />
+    <Content Include="Areas\Fusion\Content\Css\960.css" />
+    <Content Include="Areas\Fusion\Content\Css\case.css" />
+    <Content Include="Areas\Fusion\Content\Css\jquery.autocomplete.css" />
+    <Content Include="Areas\Fusion\Content\Css\main.css" />
+    <Content Include="Areas\Fusion\Content\Css\reset.css" />
+    <Content Include="Areas\Fusion\Content\Css\vs.css" />
+    <Content Include="Areas\Fusion\Content\Css\wmd.css" />
+    <Content Include="Areas\Fusion\Content\Images\Atom_Fusion.png" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\andy.brown_4.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\bene_103.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\beth.proctor_84.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\charmainem_46.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\chris.everson_113.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\clairea_71.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\clairea_72.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\clairea_74.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\danf_104.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\danf_23.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\danf_31.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\danf_44.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\daniel.karlsson_108.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\daniel.karlsson_112.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\danielod_21.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\danielod_22.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\danielod_89.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\danielod_90.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\danielod_91.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\davem_20.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\davidb_106.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\debbiem_82.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\dept-BathInfrastructure.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\dept-guild.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\dept-infrastructure.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\dept-it.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\dept-pmo.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\dept-validator2.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\dept-web.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\derekf_19.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\derekf_5.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\derekf_79.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\derekf_85.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\derekf_98.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\ewelinaw_93.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\ewelinaw_96.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\garyp_60.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\garyp_87.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\garyp_88.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\garyp_92.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\gavinm_109.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\gavinm_12.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\gavinm_13.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\john.stanbury_18.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\john.stanbury_3.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\jonathan.cook_128.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\kapil.sharma_95.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\karenc_81.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\kristie_2.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\LauraD_25.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\lauraw_49.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\lauraw_80.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\leep_114.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\leep_15.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\leep_77.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\lesleyd_115.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\lorraines_58.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\lorraines_59.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\mark.skerrett_32.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\markha_16.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\markha_17.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\markha_52.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\markha_86.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\markp_64.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\markp_65.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\markp_66.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\markp_67.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\markp_68.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\markp_69.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\matthewbu_1.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\matthewbu_110.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\missing.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\natalied_45.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\nichole.morton_73.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\oliverh_111.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\oliverl_24.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\oliverl_75.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\oliverl_76.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\oliverl_78.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\paulread_33.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\paulread_34.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\paulread_35.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\paulread_36.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\paulread_37.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\paulread_38.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\paulread_39.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\paulread_40.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\richard.ray_102.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\richard.ray_122.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\richard.ray_123.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\richard.ray_124.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\richard.ray_125.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\richard.ray_126.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\richard.ray_127.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\rochellek_57.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\rossa_116.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\rossa_117.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\rossa_27.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\rossa_28.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\rossa_29.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\rossa_30.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\rossa_41.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\rossa_42.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\rossn_83.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\russellc_26.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\russellc_6.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\ryanb_107.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\ryanb_70.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\samh_53.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\samh_54.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\simon.day_94.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\sophieh_118.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\sophieh_119.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\sophieh_120.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\sophieh_121.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\stuart.burch_10.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\stuart.burch_11.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\stuart.burch_47.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\stuart.burch_48.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\stuart.burch_51.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\stuart.burch_7.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\stuart.burch_8.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\stuart.burch_9.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\stu_14.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\tim.sutton_100.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\tim.sutton_101.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\tim.sutton_97.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\tim.sutton_99.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\trish.galloway_61.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\trish.galloway_62.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\trish.galloway_63.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\victoriag_50.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\whitt_105.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\william.low_43.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\yolandad_55.gif" />
+    <Content Include="Areas\Fusion\Content\Images\avatars\yolandad_56.gif" />
+    <Content Include="Areas\Fusion\Content\Images\backgrounds\case-priority1.png" />
+    <Content Include="Areas\Fusion\Content\Images\backgrounds\case-priority2.png" />
+    <Content Include="Areas\Fusion\Content\Images\backgrounds\case-priority3.png" />
+    <Content Include="Areas\Fusion\Content\Images\backgrounds\shadow.gif" />
+    <Content Include="Areas\Fusion\Content\Images\BeSupportedLogo.gif" />
+    <Content Include="Areas\Fusion\Content\Images\blank.gif" />
+    <Content Include="Areas\Fusion\Content\Images\fusionsmall.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\add_case.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\autoassign.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\blank.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\blank_1.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\blank_28.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\cab.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\ClientRequirements.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\Crf.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\delete.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\dept-bathinfrastructure.gif" />
+    <Content Include="Areas\Fusion\Content\Images\icons\dept-guild.gif" />
+    <Content Include="Areas\Fusion\Content\Images\icons\dept-infrastructure.gif" />
+    <Content Include="Areas\Fusion\Content\Images\icons\dept-it.gif" />
+    <Content Include="Areas\Fusion\Content\Images\icons\dept-pmo.gif" />
+    <Content Include="Areas\Fusion\Content\Images\icons\dept-validator2.gif" />
+    <Content Include="Areas\Fusion\Content\Images\icons\dept-web.gif" />
+    <Content Include="Areas\Fusion\Content\Images\icons\edit_item.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\edit_profile.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\edit_save.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\error.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\filters.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\filter_add.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\Fr.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\HouseKeeping.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\icon_error.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\Incident.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\information.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\InternalTesting.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\loading.gif" />
+    <Content Include="Areas\Fusion\Content\Images\icons\Mo.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\ok.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\OnHold.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\Project.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\Sa.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\searchbox.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\star.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\star_delete.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\Su.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\subscriptions.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\SupportIncident.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\Th.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\Tu.png" />
+    <Content Include="Areas\Fusion\Content\Images\icons\We.png" />
+    <Content Include="Areas\Fusion\Content\Images\Muppet-Beaker.jpg" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\andy_sig_16.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\beth.proctor_sig_34.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\chris.chillingworth_sig_17.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\chris.mansell_sig_18.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\craigd_sig_36.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\danf_sig_19.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\daniel.karlsson_sig_41.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\danielod_sig_2.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\danielod_sig_3.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\danielod_sig_4.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\davem_sig_12.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\davidb_sig_38.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\debbiem_sig_11.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\derekf_sig_5.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\ewelinaw_sig_8.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\ewelinaw_sig_9.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\garyp_sig_7.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\Jason_sig_13.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\jeremy.baker_sig_20.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\jon.webb_sig_21.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\julias_sig_22.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\kapil.sharma_sig_39.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\karenc_sig_23.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\lisa.sanderson_sig_24.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\lorraines_sig_25.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\lyndak_sig_26.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\marionn_sig_27.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\markha.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\markha_sig_4.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\markha_sig_6.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\markp_sig_3.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\markw_sig_28.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\michellea_sig_29.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\missing.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\nicolaa_sig_10.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\paulread_sig_30.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\rhianne.curr_sig_31.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\richard.ray_sig_42.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\richt_sig_37.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\rossn_sig_14.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\shaunm_sig_32.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\stephanie.burton_sig_40.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\stuart.burch_sig_33.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\stu_sig_1.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\stu_sig_35.gif" />
+    <Content Include="Areas\Fusion\Content\Images\signatures\trish.galloway_sig_15.gif" />
+    <Content Include="Areas\Fusion\Content\Images\TopNavActiveBG.png" />
+    <Content Include="Areas\Fusion\Content\Images\TopNavBG.png" />
+    <Content Include="Areas\Fusion\Content\Images\topnav_active.gif" />
+    <Content Include="Areas\Fusion\Content\Images\topnav_stretch.gif" />
+    <Content Include="Areas\Fusion\Content\Images\wmd\wmd-buttons.png" />
+    <Content Include="Areas\Fusion\Content\Scripts\crf\crf-add.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\highlight.pack.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\jquery.autocomplete.pack.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\jquery.extensions.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\jquery.MultiFile.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\profile\profile-details.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\showdown.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\wmd.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\workitem\search-autocomplete.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\workitem\workitem-common.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\workitem\workitem-details-common.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\workitem\workitem-linked.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\workitem\workitem-links-search.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\workitem\workitem-search.js" />
+    <Content Include="Areas\Fusion\Content\Scripts\xVal.jquery.validate.js" />
+    <Content Include="Areas\Fusion\Views\Crf\Add.aspx" />
+    <Content Include="Areas\Fusion\Views\Crf\Complete.aspx" />
+    <Content Include="Areas\Fusion\Views\Crf\CrfCompletionLinks.ascx" />
+    <Content Include="Areas\Fusion\Views\Crf\CrfAdd.ascx" />
+    <Content Include="Areas\Fusion\Views\Crf\CrfCompleted.ascx" />
+    <Content Include="Areas\Fusion\Views\Crf\CrfCompletion.ascx" />
+    <Content Include="Areas\Fusion\Views\Crf\CrfCompletionDetails.ascx" />
+    <Content Include="Areas\Fusion\Views\Crf\CrfCompletionDetails_Stage1.ascx" />
+    <Content Include="Areas\Fusion\Views\Crf\CrfCompletionDetails_Stage2.ascx" />
+    <Content Include="Areas\Fusion\Views\Crf\CrfDates.ascx" />
+    <Content Include="Areas\Fusion\Views\Crf\CrfScopeOfChange.ascx" />
+    <Content Include="Areas\Fusion\Views\Crf\CrfSignatures.ascx" />
+    <Content Include="Areas\Fusion\Views\Crf\CrfSignOff.ascx" />
+    <Content Include="Areas\Fusion\Views\Crf\Details.aspx" />
+    <Content Include="Areas\Fusion\Views\Crf\Summary.aspx" />
+    <Content Include="Areas\Fusion\Views\Incident\Add.aspx" />
+    <Content Include="Areas\Fusion\Views\Incident\Details.aspx" />
+    <Content Include="Areas\Fusion\Views\Incident\IncidentAdd.ascx" />
+    <Content Include="Areas\Fusion\Views\Incident\IncidentClosed.ascx" />
+    <Content Include="Areas\Fusion\Views\Incident\IncidentOverview.ascx" />
+    <Content Include="Areas\Fusion\Views\Profile\Details.aspx" />
+    <Content Include="Areas\Fusion\Views\Profile\ProfileAutoAssignTo.ascx" />
+    <Content Include="Areas\Fusion\Views\Profile\ProfileAvatars.ascx" />
+    <Content Include="Areas\Fusion\Views\Profile\ProfileCAB.ascx" />
+    <Content Include="Areas\Fusion\Views\Profile\ProfileFilters.ascx" />
+    <Content Include="Areas\Fusion\Views\Profile\ProfileSignatures.ascx" />
+    <Content Include="Areas\Fusion\Views\Profile\ProfileSubscriptions.ascx" />
+    <Content Include="Areas\Fusion\Views\Project\Add.aspx" />
+    <Content Include="Areas\Fusion\Views\Project\Complete.aspx" />
+    <Content Include="Areas\Fusion\Views\Project\Details.aspx" />
+    <Content Include="Areas\Fusion\Views\Project\NothingToSee.ascx" />
+    <Content Include="Areas\Fusion\Views\Project\ProjectAdd.ascx" />
+    <Content Include="Areas\Fusion\Views\Project\ProjectCompleted.ascx" />
+    <Content Include="Areas\Fusion\Views\Project\ProjectCompletion.ascx" />
+    <Content Include="Areas\Fusion\Views\Project\ProjectCompletionDetails.ascx" />
+    <Content Include="Areas\Fusion\Views\Project\ProjectSignatures.ascx" />
+    <Content Include="Areas\Fusion\Views\Project\Summary.aspx" />
+    <Content Include="Areas\Fusion\Views\Search\Test.aspx" />
+    <Content Include="Areas\Fusion\Views\Shared\CABStatus.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\IncidentSeverityDetails.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemSubscribeOthers.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\CrfEmergencyChange.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\Error.aspx" />
+    <Content Include="Areas\Fusion\Views\Shared\IncidentClosure.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\IncidentClosureDetails.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\MyFilters.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\NotInRole.aspx" />
+    <Content Include="Areas\Fusion\Views\Shared\NotInRoleForFusion.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\Search.aspx" />
+    <Content Include="Areas\Fusion\Views\Shared\SearchLinks.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WMD-Includes.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemApprovalSignOff.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemApprove.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemAssign.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemAssigned.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemAssignTo.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemChangeBoardSignOff.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemComment.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemCommentAssignTo.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemCommentExtraActions.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemComments.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemComplete.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemDocuments.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemLinks.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemOnHold.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemReject.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemSubscriptions.ascx" />
+    <Content Include="Areas\Fusion\Views\Shared\WorkItemTasks.ascx" />
+    <Content Include="Areas\Stats\Content\Css\Site.css" />
+    <Content Include="Areas\Stats\Content\Images\arrow_undo.png" />
+    <Content Include="Areas\Stats\Content\Images\Ascending.png" />
+    <Content Include="Areas\Stats\Content\Images\Atom.png" />
+    <Content Include="Areas\Stats\Content\Images\bullet_arrow_down.png" />
+    <Content Include="Areas\Stats\Content\Images\bullet_arrow_up.png" />
+    <Content Include="Areas\Stats\Content\Images\cross.png" />
+    <Content Include="Areas\Stats\Content\Images\Descending.png" />
+    <Content Include="Areas\Stats\Content\Images\folder_page.png" />
+    <Content Include="Areas\Stats\Content\Images\tick.png" />
+    <Content Include="Areas\Stats\Content\Images\Unordered.png" />
+    <Content Include="Areas\Stats\Views\Shared\ArchivedFileEntry.ascx" />
+    <Content Include="Areas\Stats\Views\Shared\ListArchived.ascx" />
+    <Content Include="Areas\Stats\Views\Shared\ListWebLog.ascx" />
+    <Content Include="Areas\Stats\Views\Shared\RowColumns.ascx" />
+    <Content Include="Areas\Stats\Views\Shared\WebLogEntry.ascx" />
+    <Content Include="Areas\Stats\Views\WebLog\ShowArchived.aspx" />
+    <Content Include="Areas\Stats\Views\WebLog\ShowWebLog.aspx" />
+    <Content Include="Areas\Suppliers\Views\Etl\Index.aspx" />
+    <Content Include="Areas\Suppliers\Views\Home\Index.aspx" />
+    <Content Include="Areas\Suppliers\Views\Mapping\ClassesForFormatType.aspx" />
+    <Content Include="Areas\Suppliers\Views\Mapping\FormatTypesForFormat.aspx" />
+    <Content Include="Areas\Suppliers\Views\Mapping\MissingBySupplier.aspx" />
+    <Content Include="Areas\Suppliers\Views\Mapping\ExistingBySupplier.aspx" />
+    <Content Include="Areas\Suppliers\Views\Mapping\Existing.aspx" />
+    <Content Include="Areas\Suppliers\Views\Mapping\Missing.aspx" />
+    <Content Include="Areas\Suppliers\Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Areas\Suppliers\Views\V2Mapping\MissingV2PPBySupplier.aspx" />
+    <Content Include="Areas\Suppliers\Views\V2Mapping\ExistingV2BySupplier.aspx" />
+    <Content Include="Areas\Suppliers\Views\V2Mapping\ExistingV2.aspx" />
+    <Content Include="Areas\Suppliers\Views\V2Mapping\ExistingV2PP.aspx" />
+    <Content Include="Areas\Suppliers\Views\V2Mapping\MissingV2BySupplier.aspx" />
+    <Content Include="Areas\Suppliers\Views\V2Mapping\MissingV2.aspx" />
+    <Content Include="Areas\Suppliers\Views\V2Mapping\MissingV2PP.aspx" />
+    <Content Include="Content\defaultTheme.css" />
+    <Content Include="Content\images\arrow_undo.png" />
+    <Content Include="Content\images\Ascending.png" />
+    <Content Include="Content\images\bullet_arrow_down.png" />
+    <Content Include="Content\images\bullet_arrow_up.png" />
+    <Content Include="Content\images\cross.png" />
+    <Content Include="Content\images\Descending.png" />
+    <Content Include="Content\images\folder_page.png" />
+    <Content Include="Content\images\help.png" />
+    <Content Include="Content\images\information.png" />
+    <Content Include="Content\images\tick.png" />
+    <Content Include="Content\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\images\Unordered.png" />
+    <Content Include="Content\jquery-ui-1.8.11.custom.css" />
+    <Content Include="Content\Scripts\jquery-ui-1.8.11.custom.min.js" />
+    <Content Include="Content\Scripts\jquery.cookie.js" />
+    <Content Include="Content\Scripts\jquery.editstylesheet.js" />
+    <Content Include="Content\Scripts\jquery.fixedheadertable.1.1.2.min.js" />
+    <Content Include="Content\Scripts\jquery.fixedtableheader-1-0-2.min.js" />
+    <Content Include="Content\Scripts\jquery.js" />
+    <Content Include="Content\Scripts\json2.js" />
+    <Content Include="Content\Scripts\webtoolkit.jscrollable.js" />
+    <Content Include="Content\Scripts\webtoolkit.scrollabletable.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Content\Scripts\jquery.validate.js" />
+    <Content Include="Content\Scripts\jquery.validate.min.js" />
+    <Content Include="log4net.config" />
+    <Content Include="Views\Security\Login.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atom.Areas.Fusion.Data\Atom.Areas.Fusion.Data.csproj">
+      <Project>{B9D35586-1BCB-4092-B62D-68418FE99D85}</Project>
+      <Name>Atom.Areas.Fusion.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atom.Areas.Fusion.Domain\Atom.Areas.Fusion.Domain.csproj">
+      <Project>{319670E9-A552-425C-9D5A-0C532A199CCD}</Project>
+      <Name>Atom.Areas.Fusion.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atom.Areas.Fusion.Events\Atom.Areas.Fusion.Events.csproj">
+      <Project>{50F268D9-2284-485A-8717-168D8AD6BD94}</Project>
+      <Name>Atom.Areas.Fusion.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atom.Areas.Suppliers.Data\Atom.Areas.Suppliers.Data.csproj">
+      <Project>{a466cc6d-511b-4023-b13a-1a3961153e7a}</Project>
+      <Name>Atom.Areas.Suppliers.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atom.Areas.Suppliers.Domain\Atom.Areas.Suppliers.Domain.csproj">
+      <Project>{ecd861c8-1973-49d0-9daf-60f1b24c2e9d}</Project>
+      <Name>Atom.Areas.Suppliers.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atom.Main.Domain\Atom.Main.Domain.csproj">
+      <Project>{8D841E9F-575F-48EC-A5F0-20EFAB756C3A}</Project>
+      <Name>Atom.Main.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ApplicationResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\images\Atom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Scripts\jquery.extensions.js" />
+    <Content Include="Views\Security\Admin.aspx" />
+    <Content Include="Views\Shared\NotFound.aspx" />
+    <Content Include="Views\Shared\Message.ascx" />
+    <Content Include="Views\Shared\NotInRole.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Error.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NHConfig.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Shared\ContentMaxExceeded.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Fusion\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Fusion\Views\Shared\Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Suppliers\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Suppliers\Views\Shared\Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Shared\Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Stats\Views\menu.sitemap" />
+    <Content Include="Areas\Stats\Views\Shared\Stats.Master" />
+    <Content Include="Areas\Stats\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Stats\Content\Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Fusion\Views\menu.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <!-- To enable MVC area subproject support, uncomment the following two lines:-->
+  <!--<UsingTask TaskName="Microsoft.Web.Mvc.Build.CreateAreaManifest" AssemblyName="Microsoft.Web.Mvc.Build, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+  <UsingTask TaskName="Microsoft.Web.Mvc.Build.CopyAreaManifests" AssemblyName="Microsoft.Web.Mvc.Build, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+  <Target Name="AfterBuild" DependsOnTargets="AfterBuildCompiler">
+    <PropertyGroup>
+      <AreasManifestDir>$(ProjectDir)\..\Manifests</AreasManifestDir>
+    </PropertyGroup>-->
+  <!-- If this is an area child project, uncomment the following line:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Child" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    -->
+  <!-- If this is an area parent project, uncomment the following lines: -->
+  <!--<CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Parent" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    <CopyAreaManifests ManifestPath="$(AreasManifestDir)" CrossCopy="false" RenameViews="true" />-->
+  <!--</Target>-->
+  <!--<Target Name="AfterBuildCompiler" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>-->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

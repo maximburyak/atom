@@ -1,0 +1,40 @@
+﻿New Change Request Submitted
+
+CRF ID:	##crfid##
+Submitted:  ##submitted##
+========================================================
+
+Submitted by:	##submittedby##
+
+Title:
+##description##
+
+Description of Change:	
+##summary##
+
+Scope of Change:
+========================================================
+Channels:
+##channels##
+
+Insurance Companies:
+##inscos##
+
+Suppliers:
+##suppliers##
+
+Product Groups:
+##products##
+
+Other Scope:
+##otherscope##
+
+Business Benefit:
+##businessbenefit##
+
+Alternatives:
+##alternatives##
+
+Severity Status:	##severity##
+
+Link to Case:	##crflink##

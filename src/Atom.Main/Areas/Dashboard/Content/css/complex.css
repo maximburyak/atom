@@ -1,0 +1,118 @@
+/*
+*	STYLES FOR: complex.html
+*
+*	Created with ThemeRoller...
+*	http://ui.jquery.com/themeroller/?bgColorDefault=e0e0e0&bgTextureDefault=02_glass.png&bgImgOpacityDefault=80&borderColorDefault=cccccc&fcDefault=444444&iconColorDefault=888888&bgColorHover=d8d8d8&bgTextureHover=02_glass.png&bgImgOpacityHover=90&borderColorHover=888888&fcHover=111111&iconColorHover=222222&bgColorActive=8ab9ff&bgTextureActive=02_glass.png&bgImgOpacityActive=50&borderColorActive=2694e8&fcActive=000000&iconColorActive=ffffff&bgColorContent=f3f3f3&fcContent=362b36&ffDefault=Lucida%20Grande,%20Lucida%20Sans,%20Arial,%20sans-serif&fwDefault=normal&fsDefault=1.2&fsDefaultUnit=em#bgColorDefault=d6d6d6&bgTextureDefault=02_glass.png&bgImgOpacityDefault=80&borderColorDefault=bbbbbb&fcDefault=000000&iconColorDefault=444444&bgColorHover=eeeeee&bgTextureHover=02_glass.png&bgImgOpacityHover=90&borderColorHover=cccccc&fcHover=000066&iconColorHover=000066&bgColorActive=80ade5&bgTextureActive=04_highlight_hard.png&bgImgOpacityActive=100&borderColorActive=266cc0&fcActive=000000&iconColorActive=ffffff&bgColorContent=D1E6FC&bgTextureContent=10_dots_medium.png&bgImgOpacityContent=90&borderColorContent=bbbbbb&fcContent=000000&iconColorContent=222222&ffDefault=Lucida+Grande%2C+Lucida+Sans%2C+Arial%2C+sans-serif&fwDefault=normal&fsDefault=1&fsDefaultUnit=em
+*/
+
+/*
+*	COMMON LAYOUT PANE FORMATTING
+*/
+.pane ,				/* outer pane class */
+.ui-layout-pane {	/* inner pane class */
+	padding: 0;/* alignment & padding is on the inner-divs */
+	overflow: auto;  /*will be auto-set to 'hidden' for any pane with a 'scrolling content div' */
+}
+
+
+/*
+*	OUTER-LAYOUT PANE FORMATTING
+*/
+.pane-north ,
+.pane-south ,
+.pane-west ,
+.pane-east {
+	overflow:		hidden;
+}
+.pane-west {
+	padding:0 0 15px 15px;
+}
+.pane-east {
+	padding:0 15px 15px 0;
+}
+
+.pane-north {
+	border-bottom:	none;
+	}
+	.pane-north .content ,
+	.pane-south .content {
+		text-align: center;
+	}
+.pane-center {
+	/* show off the inner-layout inside the outer-center-pane*/
+	padding: 0px; /* for outer layout */
+}
+
+.pane-north {background: #444;}
+
+/*
+*	OUTER LAYOUT RESIZERS & TOGGLERS
+*/
+
+/*
+ north-pane is not resizable
+.resizer-north-dragging ,
+.resizer-north:hover		{ background: url(../img/resizable-n.gif) repeat-x center; }
+*/
+.resizer-south-dragging ,
+.resizer-south:hover		{ background: url(../img/resizable-s.gif) repeat-x center; }
+	
+.resizer-west-dragging ,
+.resizer-west-open:hover	{ background: url(../img/resizable-w.gif) repeat-y center; }
+.resizer-east-dragging ,
+.resizer-east-open:hover	{ background: url(../img/resizable-e.gif) repeat-y center; }
+
+.resizer-dragging {
+	/* see draggable.opacity option
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	*/
+}
+.resizer-dragging-limit	{ background: #FF3300 !important; }
+
+/* IE6 * HACK - always show resizer graphics because IE6 cannot understand elem:hover */
+/* * html .resizer-north		{ border-top:solid 1px #787878 !important;border-bottom:solid 1px #787878 !important; } */
+* html .resizer-south		{ background: url(../img/resizable-s.gif) repeat-x center !important; }
+* html .resizer-west-open	{ background: url(../img/resizable-w.gif) repeat-y center !important; }
+* html .resizer-east-open	{ background: url(../img/resizable-e.gif) repeat-y center !important; }
+/** html .resizer-north , */
+
+
+/*
+*	SIMPLE TOGGLER BUTTONS (used on Outer Layout North/South only)
+
+
+.toggler-north-open ,
+.toggler-south-closed 		{ background: url(../img/toggle-up.gif) no-repeat center bottom; }
+.toggler-north-closed ,
+.toggler-south-open   		{ background: url(../img/toggle-dn.gif) no-repeat center top; }
+*/
+
+/*
+*	extJS-STYLE RESIZER/SLIDER-BAR (CLOSED)
+*/
+.resizer-west-closed ,
+.resizer-east-closed {
+}
+.resizer-west-closed:hover,
+.resizer-east-closed:hover {}
+
+/* STANDARD toggler-buttons - when the east/west panes are 'closed' */
+.toggler-west-closed		{ background: url(/areas/dashboard/content/images/unassigned-toggler-open.png) no-repeat center; }
+.toggler-east-closed		{ background: url(/areas/dashboard/content/images/completed-toggler-close.png) no-repeat center; }
+.toggler-west-open		{ background: url(/areas/dashboard/content/images/unassigned-toggler-close.png) no-repeat center; }
+.toggler-east-open		{ background: url(/areas/dashboard/content/images/completed-toggler-open.png) no-repeat center; }
+.toggler-west-closed:hover { background: url(/areas/dashboard/content/images/toggler-open-hover.png) no-repeat center; }
+.toggler-east-closed:hover { background: url(/areas/dashboard/content/images/toggler-close-hover.png) no-repeat center; }
+.toggler-west-open:hover { background: url(/areas/dashboard/content/images/toggler-close-hover.png) no-repeat center; }
+.toggler-east-open:hover { background: url(/areas/dashboard/content/images/toggler-open-hover.png) no-repeat center; }
+/*
+.toggler-north-closed		{ background: url(/areas/dashboard/content/images/flattoggler-open.png) no-repeat center; }
+.toggler-north-closed:hover { background: url(/areas/dashboard/content/images/flattoggler-open-hover.png) no-repeat center; }
+.toggler-north-open		{ background: url(/areas/dashboard/content/images/flattoggler-close.png) no-repeat center; }
+.toggler-north-open:hover { background: url(/areas/dashboard/content/images/flattoggler-close-hover.png) no-repeat center; }
+*/
+
+.resizer-north {border-top:solid 1px #787878 !important;border-bottom:solid 1px #787878 !important;}
+.resizer-west,.resizer-east {border-left:solid 1px #787878 !important;border-right:solid 1px #787878 !important;}
+

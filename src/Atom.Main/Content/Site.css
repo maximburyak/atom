@@ -1,0 +1,531 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+body
+{
+	background-color: #ffffff;
+	font-size: .75em;
+	font-family: Verdana, Helvetica, Sans-Serif;
+	margin: 0;
+	padding: 0;
+	color: #696969;
+}
+
+a:link
+{
+	color: #034af3;
+	text-decoration: underline;
+}
+a:visited
+{
+	color: #505abc;
+}
+a:hover
+{
+	color: #1d60ff;
+	text-decoration: none;
+}
+a:active
+{
+	color: #12eb87;
+}
+
+p, ul
+{
+	margin-bottom: 20px;
+	line-height: 1.6em;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6
+{
+	font-size: 1.5em;
+	color: #000;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1
+{
+	font-size: 2em;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+h2
+{
+	padding: 0 0 10px 0;
+}
+h3
+{
+	font-size: 1.2em;
+}
+h4
+{
+	font-size: 1.1em;
+}
+h5, h6
+{
+	font-size: 1em;
+}
+
+/* this rule styles <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+	margin-top: 0;
+}
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+/* you can specify a greater or lesser percentage for the 
+page width. Or, you can specify an exact pixel width. */
+.page
+{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#header
+{
+	position: relative;
+	margin-bottom: 0px;
+	color: #000;
+	padding: 0;
+}
+
+#header h1
+{
+	font-weight: bold;
+	padding: 5px 0;
+	margin: 0;
+	color: #5c87b2;
+	border: none;
+	line-height: 2em;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 32px !important;
+}
+
+#main
+{
+	padding: 30px 30px 15px 30px;
+	background-color: #fff;
+	margin-bottom: 30px;
+	_height: 1px; /* only IE6 applies CSS properties starting with an underscrore */
+}
+
+#footer
+{
+	color: #999;
+	padding: 10px 0;
+	text-align: center;
+	line-height: normal;
+	margin: 0;
+	font-size: .9em;
+}
+
+/* TAB MENU   
+----------------------------------------------------------*/
+ul#menu,ul#menu2
+{
+	padding: 0 0 2px;
+	position: relative;
+	margin: 0;
+	text-align: right;
+}
+
+ul#menu li, ul#menu2 li
+{
+	display: inline;
+	list-style: none;
+}
+
+ul#menu li#greeting, ul#menu2 li#greeting
+{
+	padding: 10px 20px;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: 2.8em;
+	color: #fff;
+}
+
+ul#menu li a, ul#menu2 li a
+{
+	padding: 10px 20px;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: 2.8em;
+	background-color: #5C87B2;
+	color: white;
+}
+
+ul#menu li a:hover, ul#menu2 li a:hover
+{
+	background-color: #a5a17e;
+	text-decoration: none;
+}
+
+ul#menu li a:active, ul#menu2 li a:active
+{
+	background-color: #a6e2a6;
+	text-decoration: none;
+}
+
+ul#menu li.selected a, ul#menu2 li.selected a
+{
+	background-color: #fff;
+	color: #000;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.clear
+{
+	clear: both;
+}
+
+.error
+{
+	color:Red;
+}
+
+#menucontainer
+{
+	margin-top:40px;
+}
+
+#title
+{
+	display:block;
+	float:left;
+	text-align:left;
+}
+
+#logindisplay
+{
+	font-size:1.1em;
+	display:block;
+	text-align:right;
+	margin:10px;
+	color:#5C87B2;
+}
+
+#logindisplay a:link
+{
+	color: #5C87B2;
+	text-decoration: underline;
+}
+
+#logindisplay a:visited
+{
+	color: #5C87B2;
+	text-decoration: underline;
+}
+
+/* Grid */
+table.grid
+{	
+	color: #333333;
+	border-collapse: collapse;
+}
+
+table.grid th
+{
+	color: #333333;
+	background-color: #eee;
+	font-weight: bold;
+	border-right: solid 1px #fff;
+	border-bottom: solid 1px #ccc;
+	padding: 4px;
+}
+
+table.grid td
+{
+	border-bottom: 1px solid #eee;
+	padding: 4px;
+
+}
+
+
+/* Pager */
+.pager 
+{
+	margin:8px 3px;
+	padding:3px;
+}
+
+.pager .disabled 
+{
+	border:1px solid #ddd;
+	color:#999;
+	margin-top:4px;
+	padding:3px;
+	text-align:center;
+}
+
+.pager .current 
+{
+	background-color:#06c;
+	border:1px solid #009;
+	color:#fff;
+	font-weight:bold;
+	margin-top:4px;
+	padding:3px 5px;
+	text-align:center;
+}
+
+.pager span, .pager a
+{
+	margin: 4px 3px;
+}
+
+.pager a 
+{
+	border:1px solid #c0c0c0;
+	padding:3px 5px;
+	text-align:center;
+	text-decoration:none;
+}
+
+
+/*Login forms*/
+.box-content
+{
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	background: #FBFBFB none repeat scroll 0 0;
+	border: 1px solid #EBEBEB;
+	padding: 0px 10px 10px 10px;
+}
+
+.field-validation-error
+{
+	color: #ff0000;
+}
+
+.input-validation-error
+{
+	border: 1px solid #ff0000;
+	background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+	font-weight: bold;
+	color: #ff0000;
+}
+
+.form-login, .form
+{
+	margin: 0 0 0 15px;
+}
+
+.form-login h3
+{
+	border-bottom: 1px solid #5C87B2;
+	color: #5C87B2;
+	display: block;
+	font-size: 19px;
+	font-weight: normal;
+	letter-spacing: -1px;
+	margin-bottom: 10px;
+	padding-bottom: 6px;
+}
+.form-value
+{
+	padding-top: 4px;
+}
+
+.form-login label
+{
+	display: block;
+	width: 120px;
+	padding-right:5px;
+	line-height: 100%;
+	float: left;
+}
+
+.form label
+{
+	display: block;
+	width: 120px;
+	padding-right:5px;
+	line-height: 100%;
+	float: left;
+}
+
+.form span
+{
+	font-weight: bold;
+	text-align: right;
+	float:right;
+	vertical-align: top;
+}
+
+.weblogResults
+{
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin: 5px;
+	z-index: 0;
+	overflow:hidden;
+	white-space:nowrap;
+	table-layout:fixed;
+}
+
+
+.weblogResults td
+{
+	overflow: hidden;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-left: 1px solid black;
+	white-space: nowrap;
+}
+
+.weblogResults tr td:first-child
+{
+	border-left: 0px none black;
+}
+
+.weblogResults thead td
+{
+	background-color: #5C87B2;
+	color: white;
+}
+.ClickSortable 
+{
+	cursor:pointer;
+}
+
+.weblogResults thead td:first-child
+{
+	background-color: transparent;
+}
+
+.archiveButton
+{
+	cursor:pointer;
+}
+
+.restoreButton
+{
+	cursor:pointer;
+}
+
+.zebraStripe
+{
+	background-color:  #e1eefb;
+}
+
+.hideColumn
+{
+	cursor:pointer;
+}
+
+.weblogResults thead td
+{
+	white-space: nowrap;
+}
+
+.unhideLink
+{
+	font-weight:bold;
+	cursor: pointer;	
+}
+
+#hiddenColumns
+{
+	padding-top: 5px;
+	min-height: 20px;
+}
+
+#hiddenColumnsBorder
+{
+	border: 1px solid lightgray;
+	margin: 5px;
+	padding: 5px;
+	width:30%;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border-radius: 5px;
+	border-width: medium;
+}
+
+.disabledTable
+{
+	opacity: 0.4; /* Real browsers */
+    filter: alpha(opacity = 40); /* MSIE */
+}
+
+#navigation
+{
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+	width:970px;
+}
+
+
+.loadingMessage
+{
+	opacity: 1.0; /* Real browsers */
+    filter: alpha(opacity = 100); /* MSIE */
+	background-color: #555555;
+	color: White;
+	position:absolute;
+	width: 100px;
+	margin-left: -50px;
+	left: 50%;
+	top: 400px;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius:  5px;
+	border-radius:  5px;
+	z-index:100;
+	border: thin solid #333333;
+}
+
+#WebLogSearchFieldset
+{
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: medium solid lightgray;
+	padding: 5px;
+	margin: 5px;
+	font-weight:bold;
+}
+
+.dateInput
+{
+	width: 40px;
+}
+
+.numberInput
+{
+	width: 40px;
+}
+
+.DateTime
+{
+	text-align:center;
+}
+
+.Number
+{
+	text-align: center;
+}
+
+#WebfilesTitle
+{
+	margin: 5px;	
+}
